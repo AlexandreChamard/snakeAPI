@@ -11,7 +11,7 @@ std::size_t SnakeAPI::run(void)
     generateMap();
 
     do {
-        /* you can set her a graphical interface */
+        graphicalTic(); // if you don't want to have graphical print, just do an empty function.
     } while (nextTic(computeDirection()));
     return _points;
 }
@@ -50,7 +50,7 @@ bool SnakeAPI::nextTic(Direction dir)
     _map[_snake.back().second][_snake.back().first] = nothing;
     std::memmove(_snake.data() + 1, _snake.data(), (_snake.size() - 1) * sizeof(_snake[0]));
     _snake[0] = nPos;
-    _map[nPos.second][nPos.first] = nothing;
+    _map[nPos.second][nPos.first] = snake;
     return true;
 }
 
@@ -78,7 +78,7 @@ bool SnakeAPI::generateNewApple(void)
 
     for (posUnit_t y = 0; y < mapSize; ++y) {
         for (posUnit_t x = 0; x < mapSize; ++x) {
-            if (!_map[y][x])
+            if (_map[y][x] == nothing)
                 allPos.push_back(std::make_pair(x, y));
         }
     }
