@@ -5,7 +5,7 @@
 
 SnakeAPI::Direction TestAPI::computeDirection() const
 {
-    return SnakeAPI::Direction::Right;
+    return SnakeAPI::Direction::Down;
 }
 
 void TestAPI::graphicalTic()
@@ -18,7 +18,7 @@ void TestAPI::printMap(void) const
 {
     auto &&map = getMap();
 
-    for (auto i = 0; i < SnakeAPI::mapSize + 2; ++i)
+    for (std::size_t i = 0; i < SnakeAPI::mapSize + 2; ++i)
         std::cout << '-';
     std::cout << std::endl;
     for (auto const &ee : map) {
@@ -28,7 +28,7 @@ void TestAPI::printMap(void) const
         }
         std::cout << '|' << std::endl;
     }
-    for (auto i = 0; i < SnakeAPI::mapSize + 2; ++i)
+    for (std::size_t i = 0; i < SnakeAPI::mapSize + 2; ++i)
         std::cout << '-';
     std::cout << std::endl;
 }
